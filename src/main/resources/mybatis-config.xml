@@ -12,6 +12,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="com/oumyye/mapping/userMapping.xml"/>
+        <package name="edu/uci/ics/crawler4j/download" />
     </mappers>
 </configuration>

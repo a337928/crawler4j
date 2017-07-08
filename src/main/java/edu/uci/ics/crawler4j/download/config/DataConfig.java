@@ -11,11 +11,16 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
  */
 public class DataConfig {
     public void init(){
-        String resource = "mybatis.xml"; //使用类加载器加载mybatis的配置文件（它也加载关联的映射文件）
+        String resource = "mybatis-config.xml"; //使用类加载器加载mybatis的配置文件（它也加载关联的映射文件）
         InputStream is = DataConfig.class.getClassLoader().getResourceAsStream(resource); //构建sqlSession的工厂
         SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(is);
         SqlSession session = sessionFactory.openSession();
 
 
+    }
+
+    public static void main (String args[]){
+        DataConfig dc = new DataConfig();
+        dc.init();
     }
 }
