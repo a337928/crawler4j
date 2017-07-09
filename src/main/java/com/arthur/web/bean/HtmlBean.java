@@ -1,4 +1,4 @@
-package edu.uci.ics.crawler4j.download.dao;
+package com.arthur.web.bean;
 
 /**
  * Created by wangtao on 2017/7/8.
@@ -7,7 +7,7 @@ public class HtmlBean {
     private String url;
     private String title;
     private String body;
-    private String keys;
+    private String keyword;
 
     public String getUrl() {
         return url;
@@ -33,11 +33,11 @@ public class HtmlBean {
         this.body = body;
     }
 
-    public String getKeys() {
-        return keys;
+    public String getKeyword() {
+        return keyword;
     }
 
-    public void setKeys(String keys) {
-        this.keys = keys;
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
     }
 }

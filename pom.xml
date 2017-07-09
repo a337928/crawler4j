@@ -33,6 +33,11 @@
 	</distributionManagement>	
 
 	<properties>
+		<!--<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+		<!--<jdk.version>1.8</jdk.version>-->
+		<!--<spring.version>4.3.0.RELEASE</spring.version>-->
+		<!--<hibernate.version>4.3.11.Final</hibernate.version>-->
+
 		<slf4j.version>1.7.22</slf4j.version>
 		<logback.version>1.1.7</logback.version>
 		<guava.version>21.0</guava.version>
@@ -46,11 +51,15 @@
 		<groovy.version>2.4.7</groovy.version>
 	</properties>
 
-	<parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>7</version>
-	</parent>
+		<parent>
+			<!--<groupId>org.sonatype.oss</groupId>-->
+			<!--<artifactId>oss-parent</artifactId>-->
+			<!--<version>7</version>-->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-parent</artifactId>
+			<version>1.5.4.RELEASE</version>
+		</parent>
+
 
 	<profiles>
 		<profile>
@@ -288,8 +297,43 @@
 	</build>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<!--mysql-->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
 
-    <!-- Compile time Dependencies -->
+
+		<!-- Compile time Dependencies -->
 
     <dependency>
         <!-- Logging framework -->
@@ -329,6 +373,15 @@
 		<version>${apache.tika.version}</version>
 	</dependency>
 
+
+
+		<!--druid-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.20</version>
+		</dependency>
+
     <!-- Test Dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -354,12 +407,7 @@
 			<version>${spock.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- database mybatis -->
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis</artifactId>
-			<version>3.4.4</version>
-		</dependency>
+
 	</dependencies>
 
 

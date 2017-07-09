@@ -1,0 +1,19 @@
+spring:
+    profiles:
+        active: dev
+    application:
+        name: arthur-crawler
+    datasource:
+        url: jdbc:mysql://127.0.0.1:3306/isag?useSSL=false
+        username: root
+        password: root
+        driver-class-name: com.mysql.jdbc.Driver
+
+server:
+    port: 8080
+    address: localhost
+
+#mybatis:
+#    mapperLocations: classpath:*.xml
+#    typeAliasesPackage: edu.uci.ics.crawler4j.download;
+
