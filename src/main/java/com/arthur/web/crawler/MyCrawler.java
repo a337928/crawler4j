@@ -40,8 +40,10 @@ public class MyCrawler extends WebCrawler {
      */
     @Override
     public boolean shouldVisit(Page referringPage, WebURL url) {
+
         String href = url.getURL().toLowerCase();
-        return !FILTERS.matcher(href).matches() && href.startsWith("http://sports.sina.com.cn/nba/");
+        return !FILTERS.matcher(href).matches()
+               && href.startsWith(myController.getConfig().getStartsWithUrl());
     }
 
     /**
@@ -60,7 +62,7 @@ public class MyCrawler extends WebCrawler {
             Set<WebURL> links = htmlParseData.getOutgoingUrls();
 
 
-            HtmlDao.insertHtml(htmlParseData);
+            HtmlDao.insertHtml(htmlParseData, page);
 
 
 //            System.out.println("Text length: " + text.length());

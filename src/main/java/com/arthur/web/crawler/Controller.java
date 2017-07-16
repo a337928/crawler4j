@@ -14,11 +14,12 @@ import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
 @Service
 public class Controller {
 
-    public void doController () throws Exception {
+    public void doController (String url) throws Exception {
         String crawlStorageFolder = "/Users/wangtao/Documents/downWeb";
         int numberOfCrawlers = 7;
 
         CrawlConfig config = new CrawlConfig();
+        config.setStartsWithUrl(url);
         config.setCrawlStorageFolder(crawlStorageFolder);
 
             /*
@@ -36,7 +37,7 @@ public class Controller {
              */
         //        controller.addSeed("http://www.zhihu.com/~lopes/");
         //        controller.addSeed("http://www.zhihu.com/~welling/");
-        controller.addSeed("http://sports.sina.com.cn/nba/");
+        controller.addSeed(url);
 
             /*
              * Start the crawl. This is a blocking operation, meaning that your code

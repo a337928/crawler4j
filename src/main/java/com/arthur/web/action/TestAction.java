@@ -42,8 +42,12 @@ public class TestAction {
 
     @RequestMapping("/crawler")
     @ResponseBody
-    public String crawler() throws Exception {
-        controller.doController();
-        return  "crawler";
+    public String crawler(String url) throws Exception {
+        if(url != null && !"".equals(url)){
+            controller.doController(url);
+            return  "crawler ";
+        }
+        return "param url cann't is null";
+
     }
 }

@@ -194,6 +194,10 @@ public class CrawlConfig {
      * Whether to honor "noindex" flag
      */
     private boolean respectNoIndex = true;
+    /**
+     * Crawler fetch page limit
+     */
+    private String startsWithUrl;
 
     /**
      * Validates the configs specified by this instance.
@@ -581,6 +585,14 @@ public class CrawlConfig {
         this.respectNoIndex = respectNoIndex;
     }
 
+    public String getStartsWithUrl() {
+        return startsWithUrl;
+    }
+
+    public void setStartsWithUrl(String startsWithUrl) {
+        this.startsWithUrl = startsWithUrl;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -608,6 +620,7 @@ public class CrawlConfig {
         sb.append("Cookie policy: " + getCookiePolicy() + "\n");
         sb.append("Respect nofollow: " + isRespectNoFollow() + "\n");
         sb.append("Respect noindex: " + isRespectNoIndex() + "\n");
+        sb.append("startsWithUrl: " + getStartsWithUrl() +"\n");
         return sb.toString();
     }
 }
