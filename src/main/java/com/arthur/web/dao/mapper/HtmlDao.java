@@ -20,24 +20,23 @@ import edu.uci.ics.crawler4j.url.WebURL;
 public class HtmlDao {
 
 
-//    private static HtmlMapper htmlMapper;
+    private static HtmlMapper htmlMapper;
 
     public static void insertHtml(HtmlParseData htmlParseData, Page page){
-        HtmlMapper htmlMapper = (HtmlMapper)SpringUtil.getBean("htmlMapper");
-        String text = htmlParseData.getText();
-        String html = htmlParseData.getHtml();
-        Set<WebURL> links = htmlParseData.getOutgoingUrls();
+//        HtmlMapper mapper = (HtmlMapper)SpringUtil.getBean("htmlMapper");
+//        String text = htmlParseData.getText();
+//        String html = htmlParseData.getHtml();
+//        Set<WebURL> links = htmlParseData.getOutgoingUrls();
 
         HtmlBean htmlBean = new HtmlBean();
         htmlBean.setUrl(page.getWebURL().getURL());
-        htmlBean.setBody("123");
-        //htmlBean.setKeyword(htmlParseData.get);
+        htmlBean.setBody("测试");
         htmlBean.setTitle(htmlParseData.getTitle());
         htmlMapper.insertHtml(htmlBean);
     }
 
-//    @Autowired(required = true)
-    //    public static void setHtmlMapper(HtmlMapper htmlMapper) {
-    //        HtmlDao.htmlMapper = htmlMapper;
-    //    }
+    @Autowired
+    public void setHtmlMapper(HtmlMapper htmlMapper) {
+        HtmlDao.htmlMapper = htmlMapper;
+    }
 }
