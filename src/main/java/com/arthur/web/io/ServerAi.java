@@ -19,6 +19,9 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.LongBuffer;
 import java.nio.ShortBuffer;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.RunnableFuture;
 
 /**
  * Created by wangtao on 2017/8/23.
@@ -29,6 +32,8 @@ public class ServerAi extends Thread{
        super(name);
    }
 
+    private Map<Integer, Runnable> clients = new HashMap<>();
+
     public void run(){
         try {
             ServerSocket server = new ServerSocket(5500);
@@ -36,32 +41,66 @@ public class ServerAi extends Thread{
             while (!Thread.currentThread().isInterrupted()){
                 Socket socket = server.accept();
 
+                System.out.println("socket host : " + socket.getLocalAddress() + "& port :" + socket.getPort() );
 
-//                InputStream inputStream = socket.getInputStream();
+                Thread subThread = new Thread() {
+
+                    private Socket socketClient = socket;
+
+                    @Override
+                    public void run() {
+
+                        while (!Thread.currentThread().isInterrupted()){
+                            try {
+                                Reader  reader = new BufferedReader(
+                                    new InputStreamReader(socketClient.getInputStream()));
+
+                                int n = reader.read();
+                                if(n == -1){
+                                    reader.close();
+                                    socketClient.close();
+                                    System.out.println("socket is closed");
+                                    return;
+                                }
+                                System.out.println(n);
 //
-//
-//                //Reader  reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-//                int data = inputStream.read();
-//                while (data != -1){
-//                    Character character = (char)data;
-//                    System.out.print(character);
-//                    data = inputStream.read();
-//                }
 
-                OutputStream outputStream =  socket.getOutputStream();
-                Writer out = new BufferedWriter(new OutputStreamWriter(outputStream));
-                out.write("success");
-                out.flush();
-
-                outputStream.close();
-
-//                inputStream.close();
-
-
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                };
+                subThread.start();
+                clients.put(socket.getPort(), subThread);
 
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
+//    private class subSocketServer extends Thread {
+//        private Socket socketClient;
+//
+//        void init(Socket socket){
+//            socketClient = socket;
+//        }
+//
+//        @Override
+//        public void run() {
+//            while (!Thread.currentThread().isInterrupted()){
+//                try {
+//                    Reader  reader = new BufferedReader(
+//                        new InputStreamReader(socketClient.getInputStream()));
+//                    System.out.println(reader.read());
+//                    reader.close();
+//
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
+//    }
 }

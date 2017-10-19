@@ -25,8 +25,8 @@ public class NioBlockingHttpClient {
 
     public NioBlockingHttpClient(String host, int port) throws IOException {
         this.host = host;
-        socketChannel = SocketChannel.open();
-        socketChannel.socket().setSoTimeout(5000);
+        this.socketChannel = SocketChannel.open();
+        this.socketChannel.socket().setSoTimeout(5000);
         SocketAddress remote = new InetSocketAddress(this.host, port);
         this.socketChannel.connect(remote);
     }
