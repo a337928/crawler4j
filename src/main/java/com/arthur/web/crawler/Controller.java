@@ -17,9 +17,12 @@ public class Controller {
     public void doController (String url) throws Exception {
         String crawlStorageFolder = "/Users/wangtao/Documents/downWeb";
         int numberOfCrawlers = 7;
-
+        String crawlerUrl= url;
+        if (!url.startsWith("http://")){
+            crawlerUrl = "http://" + crawlerUrl;
+        }
         CrawlConfig config = new CrawlConfig();
-        config.setStartsWithUrl(url);
+        config.setStartsWithUrl(crawlerUrl);
         config.setCrawlStorageFolder(crawlStorageFolder);
 
             /*
@@ -37,7 +40,7 @@ public class Controller {
              */
         //        controller.addSeed("http://www.zhihu.com/~lopes/");
         //        controller.addSeed("http://www.zhihu.com/~welling/");
-        controller.addSeed(url);
+        controller.addSeed(crawlerUrl);
 
             /*
              * Start the crawl. This is a blocking operation, meaning that your code
