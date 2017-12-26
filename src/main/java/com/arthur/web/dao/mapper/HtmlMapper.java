@@ -10,7 +10,7 @@ import com.arthur.web.bean.HtmlBean;
  */
 @Mapper
 public interface HtmlMapper {
-    @Insert(" insert into html (url,title,body,keyword) " +
+    @Insert(" insert into crawler4j_html (url,title,body,keyword) " +
             " values (#{url},#{title},#{body},#{keyword}) ")
      int insertHtml(HtmlBean htmlBean);
 

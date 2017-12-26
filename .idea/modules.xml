@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/crawler4j.iml" filepath="$PROJECT_DIR$/crawler4j.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/crawler4j_local.iml" filepath="$PROJECT_DIR$/.idea/crawler4j_local.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/crawler4j.iml" filepath="$PROJECT_DIR$/.idea/crawler4j.iml" />
+      <module fileurl="file://D:\workDir\crawler4j\crawler4j.iml" filepath="D:\workDir\crawler4j\crawler4j.iml" />
+      <module fileurl="file://D:\workDir\crawler4j\.idea\crawler4j_local.iml" filepath="D:\workDir\crawler4j\.idea\crawler4j_local.iml" />
     </modules>
   </component>
 </project>

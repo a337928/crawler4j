@@ -1,0 +1,8 @@
+server:
+    port: 9100
+    address: localhost
+
+#mybatis:
+#    mapperLocations: classpath:*.xml
+#    typeAliasesPackage: edu.uci.ics.crawler4j.download;
+

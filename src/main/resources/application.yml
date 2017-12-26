@@ -4,14 +4,11 @@ spring:
     application:
         name: arthur-crawler
     datasource:
-        url: jdbc:mysql://127.0.0.1:3306/isag?useSSL=false
+        url: jdbc:mysql://127.0.0.1:3306/crawler4j?useUnicode=true&amp;characterEncoding=UTF-8
         username: root
         password: root
         driver-class-name: com.mysql.jdbc.Driver
 
-server:
-    port: 8080
-    address: localhost
 
 #mybatis:
 #    mapperLocations: classpath:*.xml
